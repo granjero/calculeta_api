@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+    $test = ["test" => "OK", "fecha" => date('Y-m-d')];
+    return response()->json($test);
+});
 Route::prefix('v1')->group(function () {
     Route::get('/user', function (Request $request) {
         return dump($request->user());
