@@ -21,6 +21,9 @@ Route::get('/test', function () {
     return response()->json($test);
 });
 Route::prefix('v1')->group(function () {
+
+    Route::get('getApiKey', [UserController::class, 'getApiKey']);
+
     Route::get('/user', function (Request $request) {
         return dump($request->user());
     });
