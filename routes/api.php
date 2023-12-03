@@ -17,18 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-    $test = ["test" => "OK", "fecha" => date('Y-m-d')];
+    $test = ["test" => "OK", "fecha" => date('Y-m-d H:i:s')];
     return response()->json($test);
 });
 Route::prefix('v1')->group(function () {
 
-    Route::get('getApiKey', [UserController::class, 'getApiKey']);
-
-    Route::get('/user', function (Request $request) {
-        return dump($request->user());
-    });
-
     Route::post('registro', [UserController::class, 'registro']);
+
+    Route::post('login', [UserController::class, 'login']);
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('piletas', PiletasController::class);

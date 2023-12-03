@@ -34,16 +34,19 @@ class UserController extends Controller
             return response()->json($token, 201);
         }
     }
-    public function getApiKey(Request $request)
-    {
 
+    public function login(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:8',
+            // 'password' => 'required|string|min:8',
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors()->messages());
+            $messages = $validator->messages(); // Now $messages is an instance of \Illuminate\Support\MessageBag
+            if( $messages->get('email')[0] == "The selected email is invalid.") {
+                return response()->json(["email no registrado"], 422);
+            }
         } else {
             $credentials = $request->only('email', 'password');
 
@@ -51,10 +54,9 @@ class UserController extends Controller
                 $user = Auth::user();
                 $token = $user->createToken('api_token')->plainTextToken;
 
-                return response()->json([$token , 'user' => $user ,'tokens' => $user->tokens], 201);
+                return response()->json([$token, 'user' => $user, 'tokens' => $user->tokens], 201);
             }
-
-            return response()->json(['Login failed'], 401);
+            return response()->json(['ERR_login'], 401);
         }
     }
 }
