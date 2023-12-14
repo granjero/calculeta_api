@@ -11,49 +11,44 @@ class ControladorPiletas extends Controller
      */
     public function index()
     {
-        // $piletas = curl_exec(curl_init('https://dukarevich.com.ar/api/c/ultimas10'));
         $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
         $piletas = json_decode($piletas);
 
         foreach ($piletas as $pileta) {
             $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
-            $pileta->piletas = explode("|", $pileta->pileta);
+            $pileta->series = explode("|", $pileta->pileta);
+
+            $tiempoTotal = 0;
+            foreach ($pileta->series as $serie) {
+                preg_match_all('/\d+/', $serie, $matches);
+                $tiempoTotal += array_sum($matches[0]);
+            }
+            $pileta->tiempoTotal = $tiempoTotal;
         }
 
-        // dd($piletas);
-
+        // dd($pileta->series);
         return view('piletas.piletas')->with('piletas', $piletas ?? ['caca']);
     }
 
     public function ultima()
     {
-        // $piletas = curl_exec(curl_init('https://dukarevich.com.ar/api/c/ultimas10'));
-        $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
-        $piletas = json_decode($piletas);
 
-        foreach ($piletas as $pileta) {
-            $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
-            $pileta->piletas = explode("|", $pileta->pileta);
-        }
-
-        // dd($piletas);
-
-        return view('piletas.piletas')->with('piletas', $piletas ?? ['caca']);
+        return "Todavía no hay nada acá.";
     }
 
     public function pileta(string $id)
     {
-        // $piletas = curl_exec(curl_init('https://dukarevich.com.ar/api/c/ultimas10'));
         $pileta = file_get_contents("https://dukarevich.com.ar/api/c/pileta/$id");
-
-
         $pileta = json_decode($pileta);
+
+        if (isset($pileta->error)) return $pileta->error;
+
         $pileta->piletas = substr_count($pileta->pileta, "P");
         preg_match_all('/\d+/', $pileta->pileta, $matches);
         $tiempoTotal = array_sum($matches[0]);
         $pileta->tiempoTotal = $tiempoTotal;
-        $series = explode("|",$pileta->pileta);
-        foreach($series as $id => $serie) {
+        $series = explode("|", $pileta->pileta);
+        foreach ($series as $id => $serie) {
             $series[$id] = explode(',', $serie);
         }
         $pileta->series = $series;

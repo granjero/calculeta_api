@@ -5,8 +5,12 @@ return [
 
     "menu" => [
         [
+            'titulo' => 'Inicio',
+            'href'  => '/',
+        ],
+        [
             'titulo' => 'Ultima',
-            'href'  => 'ultima',
+            'href'  => '/ultima',
         ],
         // [
         //     'titulo' => 'Ultimas 10',

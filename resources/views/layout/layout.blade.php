@@ -28,10 +28,12 @@
 <body>
     <div class="sidebar-layout fullscreen">
 
+
         @include('layout.sidebar')
 
         <div class="">
             <main>
+            <h1>Calculeta®</h1>
                 @yield('contenido')
             </main>
 

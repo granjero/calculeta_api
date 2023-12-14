@@ -2,8 +2,6 @@
 @section('titulo', 'Piletas')
 
 @section('contenido')
-<h1>Panel</h1>
-
 <div class="">
     <section class="box flex-grow:3">
         <div>
@@ -45,7 +43,7 @@
                     <strong> {{ count($serie) - 1 }} </strong>
                     piletas en
                     <strong> {{ floor($tiemposSerie['P']/60) }}m {{ floor($tiemposSerie['P']%60) }}s </strong>
-                    con descando de
+                    con descanso de
                     <strong> {{ floor($tiemposSerie['D']/60) }}m {{ floor($tiemposSerie['D']%60) }}s</p> </strong>
                     {{-- <pre> {{ var_dump($serie) }}</pre> --}}
                     <h3>Piletas</h3>
