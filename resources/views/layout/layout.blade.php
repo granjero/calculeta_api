@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+
     <title>@yield('titlulo', 'Calculeta')</title>
 
     <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.1">
@@ -28,26 +29,22 @@
 <body>
     <div class="sidebar-layout fullscreen">
 
-
         @include('layout.sidebar')
 
         <div class="">
             <main>
-            <h1>Calculeta®</h1>
+                <h1>Calculeta®</h1>
+
                 @yield('contenido')
+
             </main>
 
             <footer>
-                Calculeta®<br>
+                <a href="https://github.com/granjero/calculeta" target="_blank">Calculeta®</a><br>
                 Otro Invento sin sentido by jm
             </footer>
         </div>
     </div>
-
-
-
-
-
 </body>
 
 </html>
