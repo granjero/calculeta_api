@@ -1,0 +1,150 @@
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:CN = dukarevich.com.ar
+   i:C = US, O = Let's Encrypt, CN = R3
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFBTCCA+2gAwIBAgISBAOXzcs5dTcgO5o9kyiBbDZvMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yMzExMTMxOTEzMDJaFw0yNDAyMTExOTEzMDFaMBwxGjAYBgNVBAMT
+EWR1a2FyZXZpY2guY29tLmFyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyB6tCVvPtEHgd6TJnzTZsMWfhH+bpFG/QQXS/abxZW3FxxyO7IOJcuJrTLjO
+unRRSdJ1qdL575Vs0AsuHPBFNnOWJTd/F5xycOalfAEB78ZBdi5sZagyZpIMCiDR
+mfyiqfujB/nZDwpjLjkSvpNVXu8p7fZCEQwcc7jybyO8/I5X+rVR4DQacpbdh3bF
+VssixP+fXZ+zLflqEh66XNjyWkS/q0aDWPoM2yWGvlsD9pwOCCk4sDD+1jRoKlFz
+7dU0KBJJa6j67014mSzhdRF2zGR6ngjfPP7IuSC0rvV4U6MvfhPTDJJUkX57D56L
+eiOnWAFgV0rBglqe8qj1sZd7CQIDAQABo4ICKTCCAiUwDgYDVR0PAQH/BAQDAgWg
+MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0G
+A1UdDgQWBBROOnfLCIRqJx4qXl5/rJhW2iTv6DAfBgNVHSMEGDAWgBQULrMXt1hW
+y65QCUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6
+Ly9yMy5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iu
+b3JnLzAzBgNVHREELDAqghFkdWthcmV2aWNoLmNvbS5hcoIVd3d3LmR1a2FyZXZp
+Y2guY29tLmFyMBMGA1UdIAQMMAowCAYGZ4EMAQIBMIIBAwYKKwYBBAHWeQIEAgSB
+9ASB8QDvAHYAO1N3dT4tuYBOizBbBv5AO2fYT8P0x70ADS1yb+H61BcAAAGLylDs
+/wAABAMARzBFAiEAtkqwCQASbVUx7MnUpoKIKV3Ysqmxzck5qyNht2L0h3sCIGG3
+zPivZIBkS0JuM+8tW8ks0nFQJsQH3dFFyMnQwwLaAHUA7s3QZNXbGs7FXLedtM0T
+ojKHRny87N7DUUhZRnEftZsAAAGLylDtBgAABAMARjBEAiB0xL/l+THZ60OxmOpg
+rJ/0oyvzj69HwqRYjFtw+A5/0AIgZf4/3pA55TgdGiAypFtjX9OgnqvLmJrfShWc
+dIc9PuAwDQYJKoZIhvcNAQELBQADggEBAA7cdsQh5C1/M0Vty05lYkB8HmzdqNQS
+pmGEAutOzkx+oTPzLR9K3jq8hyLs+4tQ6hqRVrZUAP2xgFP335OpDMJneDmLhOM1
+ygxGAFxKODXMPYaRRMjJmEWUjvjneiMjllC4+tPe1LjuYK+vaDV8Kyj1gGiopjga
+YXN+l0yJUf9mncVfreEkIJ2rxHjVkFMVBgalviDaqkL7Kj5nzH+ASnaPYdXDLpW+
+oepITTft0E1MabvSogkRu4ZdSYCDPmoil4ipvhhquFuAMnZpPxVyoYTXdzhI5RkD
+DBEp2bEZcL3wTrJ9BIYHdF+Y7i4Q7FY0GwGf0IczDXlJNcPbi8kdwKw=
+-----END CERTIFICATE-----
+subject=CN = dukarevich.com.ar
+
+issuer=C = US, O = Let's Encrypt, CN = R3
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1849 bytes and written 399 bytes
+Verification error: unable to verify the first certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 21 (unable to verify the first certificate)
+---
+HTTP/1.1 400 Bad Request
+Date: Wed, 13 Dec 2023 14:49:41 GMT
+Server: Apache/2.4.29 (Ubuntu)
+Content-Length: 310
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+<hr>
+<address>Apache/2.4.29 (Ubuntu) Server at dukarevich.com.ar Port 443</address>
+</body></html>
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 87DAB7B3497D43E709297376AA524C4437F29CEF68AB3788D85995A1772B9E8A
+    Session-ID-ctx: 
+    Resumption PSK: BA57F71603214A27500BC65C7A32950F09578AAF3E4D2E044180711891A3E3B9E28F1B24031E1E06E2CB33B9CC0E1A6E
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 50 4f 92 4d 93 5d 36 59-96 8b 22 35 8f ef 65 09   PO.M.]6Y.."5..e.
+    0010 - 9b a0 cc a0 17 5d 22 f3-db a8 37 03 10 30 ba fd   .....]"...7..0..
+    0020 - 9a 68 d8 4d fc 2b 71 c5-e6 bc 38 e4 8e ed c1 74   .h.M.+q...8....t
+    0030 - 8e 5c fb 45 45 1a 96 cb-d9 62 9e 46 84 dd 4a be   .\.EE....b.F..J.
+    0040 - 6e 3c 0e df b1 9d 2e 72-f3 3b 90 c7 18 44 70 fc   n<.....r.;...Dp.
+    0050 - 96 93 6e 37 5f 48 94 a6-b4 7f fc 12 df 49 39 40   ..n7_H.......I9@
+    0060 - c7 0b 0f 33 e2 12 4e 46-b3 18 b2 b4 e4 b8 4d dc   ...3..NF......M.
+    0070 - 38 f7 68 11 19 12 9f cc-fa 05 44 fd c5 0d 5f 28   8.h.......D..._(
+    0080 - 11 ad 8c 47 98 4d e9 76-f5 81 2e 50 8a 55 25 85   ...G.M.v...P.U%.
+    0090 - d3 58 33 95 2d fd 8c 27-43 a9 43 9e cd 1b ef 1e   .X3.-..'C.C.....
+    00a0 - af 5e 29 80 50 16 62 d4-71 5b c1 3e 44 b6 9c 57   .^).P.b.q[.>D..W
+    00b0 - 4e 60 a9 0f 34 e8 ea 68-2f 5d 17 7f 73 3d 03 99   N`..4..h/]..s=..
+    00c0 - ac 77 47 97 6c a8 1c 0f-5a 98 b4 28 95 a7 ec ab   .wG.l...Z..(....
+    00d0 - ea 31 30 63 4a 08 fe 18-2f 33 8f e0 22 b5 ad ba   .10cJ.../3.."...
+    00e0 - 5b 9c f5 8a 21 b5 2a 5b-76 2f ec a4 26 0c 61 e6   [...!.*[v/..&.a.
+    00f0 - 57 7e fd d0 ac d6 d1 b8-24 67 15 ce 9f c2 d1 a9   W~......$g......
+
+    Start Time: 1702478968
+    Timeout   : 7200 (sec)
+    Verify return code: 21 (unable to verify the first certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 9097F82314826835DA70DD075E4E927A3C398F494744BAF2FAA10101E425C8F6
+    Session-ID-ctx: 
+    Resumption PSK: 7118D8263236866B775CF8B9A2A4667F37DBB12A7673E59C212E6D30BD5E8EF4395938F288810714CDA2298B06FC9755
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 50 4f 92 4d 93 5d 36 59-96 8b 22 35 8f ef 65 09   PO.M.]6Y.."5..e.
+    0010 - f1 1a 79 b8 b1 93 74 c0-c5 c6 78 66 34 94 67 b1   ..y...t...xf4.g.
+    0020 - 4a 46 46 94 fd 0a 9f dc-8e b0 e0 63 06 e6 ca 6d   JFF........c...m
+    0030 - 6a 1f 7e a4 4a cd 91 b7-1d 3f 40 ab 4a 37 2b 3b   j.~.J....?@.J7+;
+    0040 - 9b 2c e4 20 0c 74 e8 19-e3 e9 12 cc 14 76 80 e0   .,. .t.......v..
+    0050 - 43 2f 7b bc 37 10 60 c7-9a c9 54 99 15 3f ba e2   C/{.7.`...T..?..
+    0060 - 99 33 76 ef a2 ec c5 fc-23 95 35 66 71 19 b8 b5   .3v.....#.5fq...
+    0070 - d1 ef ca 42 00 c2 1e c9-eb da 8e 15 29 a7 ac 1d   ...B........)...
+    0080 - 1a a2 fc ee 22 82 ef 03-f6 95 6b b0 39 d4 cd c5   ....".....k.9...
+    0090 - e4 17 1d 32 7b d8 64 24-e0 43 dc b8 b1 17 42 88   ...2{.d$.C....B.
+    00a0 - ac d1 08 a4 01 1b 41 51-41 08 7a 73 65 d6 01 37   ......AQA.zse..7
+    00b0 - 3a 53 e8 fb 91 2b 96 54-82 78 6b ca 27 f7 f1 98   :S...+.T.xk.'...
+    00c0 - b2 6e 13 ea 3b 75 dc 50-09 92 2d 14 27 b7 dd e5   .n..;u.P..-.'...
+    00d0 - 7b 8e b3 2f d1 85 2b c0-9f 05 e1 63 48 3b 3d 2d   {../..+....cH;=-
+    00e0 - 2d 6f b2 ce ec f6 c3 bd-21 97 24 b5 e6 75 93 d5   -o......!.$..u..
+    00f0 - 13 1b 73 eb a9 1b c9 c7-dc e2 31 33 d5 14 82 5e   ..s.......13...^
+
+    Start Time: 1702478968
+    Timeout   : 7200 (sec)
+    Verify return code: 21 (unable to verify the first certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+closed

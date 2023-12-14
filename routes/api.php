@@ -20,13 +20,13 @@ Route::get('/test', function () {
     $test = ["test" => "OK", "fecha" => date('Y-m-d H:i:s')];
     return response(date('Y-m-d H:i:s'));
 });
-Route::prefix('v1')->group(function () {
-
-    Route::post('registro', [UserController::class, 'registro']);
-
-    Route::post('login', [UserController::class, 'login']);
-
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::apiResource('piletas', PiletasController::class);
-    });
-});
+// Route::prefix('v1')->group(function () {
+//
+//     Route::post('registro', [UserController::class, 'registro']);
+//
+//     Route::post('login', [UserController::class, 'login']);
+//
+//     Route::middleware('auth:sanctum')->group(function () {
+//         Route::apiResource('piletas', PiletasController::class);
+//     });
+// });

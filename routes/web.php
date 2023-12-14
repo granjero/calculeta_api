@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControladorPiletas;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ControladorPiletas::class, 'index']);
 
-Route::get('/login', function () {
-    return view('login')->name('login');
-});
+Route::get('/ultima', [ControladorPiletas::class, 'ultima']);
+
+Route::get('/pileta/{id}', [ControladorPiletas::class, 'pileta']);
+
