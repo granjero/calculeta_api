@@ -11,29 +11,66 @@ class ControladorPiletas extends Controller
      */
     public function index()
     {
-        $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
-        $piletas = json_decode($piletas);
+            $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
+            $piletas = json_decode($piletas);
 
-        foreach ($piletas as $pileta) {
-            $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
-            $pileta->series = explode("|", $pileta->pileta);
+            foreach ($piletas as $pileta) {
+                $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
+                $pileta->series = explode("|", $pileta->pileta);
 
-            $tiempoTotal = 0;
-            foreach ($pileta->series as $serie) {
-                preg_match_all('/\d+/', $serie, $matches);
-                $tiempoTotal += array_sum($matches[0]);
+                $tiempoTotal = 0;
+                foreach ($pileta->series as $serie) {
+                    preg_match_all('/\d+/', $serie, $matches);
+                    $tiempoTotal += array_sum($matches[0]);
+                }
+                $pileta->tiempoTotal = $tiempoTotal;
             }
-            $pileta->tiempoTotal = $tiempoTotal;
-        }
 
-        // dd($pileta->series);
-        return view('piletas.piletas')->with('piletas', $piletas ?? ['caca']);
+            // dd($pileta->series);
+            return view('index')->with('piletas', $piletas);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function inicio(Request $request)
+    {
+        if ($request->header('hx-request')) {
+            $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
+            $piletas = json_decode($piletas);
+
+            foreach ($piletas as $pileta) {
+                $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
+                $pileta->series = explode("|", $pileta->pileta);
+
+                $tiempoTotal = 0;
+                foreach ($pileta->series as $serie) {
+                    preg_match_all('/\d+/', $serie, $matches);
+                    $tiempoTotal += array_sum($matches[0]);
+                }
+                $pileta->tiempoTotal = $tiempoTotal;
+            }
+
+            // dd($pileta->series);
+            return view('piletas.inicio')->with('piletas', $piletas);
+        }
     }
 
     public function ultima()
     {
-
         return "Todavía no hay nada acá.";
+    }
+
+    public function acerca(Request $request)
+    {
+        if ($request->header('hx-request'))
+            return view('piletas.acerca')->with('menu', 'acerca');
+    }
+
+    public function como(Request $request)
+    {
+        if ($request->header('hx-request'))
+            return "Todavía no hay nada acá.";
     }
 
     public function pileta(string $id)

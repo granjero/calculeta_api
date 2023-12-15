@@ -3,7 +3,7 @@
     <nav>
         <ul role="list">
             @foreach(config('sidebar.menu') as $item)
-                <li><a href="{{ $item['href'] }}" @if($loop->first) aria-curren="page" @endif >{{ $item['titulo'] }}</a></li>
+                <li><button class="ok color" hx-get="{{ $item['href'] }}" hx-swap="innerHTML" hx-target="#contenido">{{ $item['titulo'] }}</button></li>
             @endforeach
         </ul>
     </nav>

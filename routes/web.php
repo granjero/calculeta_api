@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ControladorPiletas::class, 'index']);
 
+Route::get('/inicio', [ControladorPiletas::class, 'inicio']);
+
+Route::get('/acerca', [ControladorPiletas::class, 'acerca']);
+
+Route::get('/como', [ControladorPiletas::class, 'como']);
+
 Route::get('/ultima', [ControladorPiletas::class, 'ultima']);
 
 Route::get('/pileta/{id}', [ControladorPiletas::class, 'pileta']);

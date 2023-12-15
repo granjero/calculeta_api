@@ -1,7 +1,3 @@
-@extends('layout.layout')
-@section('titulo', 'Piletas')
-
-@section('contenido')
 <div class="">
     <section class="box flex-grow:3">
         <div>
@@ -66,4 +62,4 @@
             </div>
         @endforeach
     </section>
-    @endsection
+</div>

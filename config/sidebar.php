@@ -6,11 +6,19 @@ return [
     "menu" => [
         [
             'titulo' => 'Inicio',
-            'href'  => '/',
+            'href'  => '/inicio',
+        ],
+        // [
+        //     'titulo' => 'Ultima',
+        //     'href'  => '/ultima',
+        // ],
+        [
+            'titulo' => 'Acerca de',
+            'href'  => '/acerca',
         ],
         [
-            'titulo' => 'Ultima',
-            'href'  => '/ultima',
+            'titulo' => 'Funcionamiento',
+            'href'  => '/como',
         ],
         // [
         //     'titulo' => 'Ultimas 10',
