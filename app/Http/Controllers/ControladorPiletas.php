@@ -85,10 +85,29 @@ class ControladorPiletas extends Controller
         $tiempoTotal = array_sum($matches[0]);
         $pileta->tiempoTotal = $tiempoTotal;
         $series = explode("|", $pileta->pileta);
+        $datosSerie = [];
         foreach ($series as $id => $serie) {
+            $cantPiletasSerie = 0;
             $series[$id] = explode(',', $serie);
+            $serieD = 0;
+            $serieP = 0;
+            foreach($series[$id] as $datos) {
+                $dato = explode(':', $datos);
+                if ($dato[0] == 'P'){
+                    $serieP += $dato[1];
+                    $cantPiletasSerie++;
+                }
+                else $serieD += $dato[1];
+            }
+            $promedioPileta = $serieP / $cantPiletasSerie;
+            $datosSerie[$id] = ["P" => sprintf("%02d", floor($serieP/60)) . ":" . sprintf("%02d", floor($serieP%60)),
+                                "D" => sprintf("%02d", floor($serieD/60)) . ":" . sprintf("%02d", floor($serieD%60)),
+                                "promedio" => sprintf("%ds", $promedioPileta)
+
+            ];
         }
         $pileta->series = $series;
+        $pileta->datosSeries = $datosSerie;
         return view('piletas.pileta')->with('pileta', $pileta ?? ['caca']);
     }
 

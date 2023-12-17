@@ -7,10 +7,10 @@
 
     <title>@yield('titlulo', 'Calculeta')</title>
 
-    <link rel="stylesheet" href={{ asset('css/missing.min.css') }}>
     <link rel="stylesheet" href={{ asset('css/estilo.css') }}>
+    <link rel="stylesheet" href={{ asset('css/missing.min.css') }}>
 
-    <link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=source-hiddenhiddensans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
     <script src="{{ asset('js/htmx.min.js') }}"></script>
     <style>
         :root {
