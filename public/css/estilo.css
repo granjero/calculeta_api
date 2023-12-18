@@ -2,6 +2,14 @@
     cursor: pointer;
   }
 
+.flotando {
+    position: absolute;
+    top: -6px;
+    left: 0px;
+    width: 100%;
+    z-index: 100;
+}
+
 details {
     padding: 3% 2%  !important;
 }

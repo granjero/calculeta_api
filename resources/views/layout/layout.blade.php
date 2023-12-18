@@ -31,14 +31,14 @@
 </head>
 
 <body>
+    <div class="flotando">
+        <progress id="pensando" class="htmx-indicator ok width:100%">progress</progress>
+    </div>
     <div class="sidebar-layout fullscreen">
 
         @include('layout.sidebar')
 
         <div class="">
-            <div class="center">
-                <progress id="pensando" class="htmx-indicator ok width:100%">progress</progress>
-            </div>
             <main>
                 <div id="contenido">
                     @yield('contenido')
