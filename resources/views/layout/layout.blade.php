@@ -6,7 +6,7 @@
     {{-- <meta name="viewport" content="width=device-width"> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>@yield('titlulo', 'Calculeta')</title>
+    <title>@yield('titulo', 'Calculeta')</title>
 
     <link rel="stylesheet" href={{ asset('css/estilo.css') }}>
     <link rel="stylesheet" href={{ asset('css/missing.min.css') }}>
@@ -36,6 +36,9 @@
         @include('layout.sidebar')
 
         <div class="">
+            <div class="center">
+                <progress id="pensando" class="htmx-indicator ok width:100%">progress</progress>
+            </div>
             <main>
                 <div id="contenido">
                     @yield('contenido')

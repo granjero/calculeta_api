@@ -11,7 +11,7 @@
                     <th>tiempo</th>
                 </tr>
                 @foreach($piletas as $pileta)
-                <tr class="clickable" hx-get="/pileta/{{ $pileta->id }}" hx-target="#contenido" hx-swap="ineerHTML">
+                <tr class="clickable" hx-get="/pileta/{{ $pileta->id }}" hx-indicator="#pensando" hx-target="#contenido" hx-swap="ineerHTML" >
                     <td><span>🏊</span></td>
                     <td>{{ \Carbon\Carbon::parse($pileta->fecha)->format('d-m-Y') }}</td>
                     <td>{{ $pileta->totalPiletas }}</td>

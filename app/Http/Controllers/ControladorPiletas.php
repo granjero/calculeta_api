@@ -27,8 +27,8 @@ class ControladorPiletas extends Controller
             // }
             //
             // // dd($pileta->series);
-            // return view('index')->with('piletas', $piletas);
-            return view('layout.layout');
+            return view('index');
+            // return view('layout.layout');
     }
 
     /**
@@ -111,6 +111,15 @@ class ControladorPiletas extends Controller
         $pileta->series = $series;
         $pileta->datosSeries = $datosSerie;
         return view('piletas.pileta')->with('pileta', $pileta ?? ['caca']);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function delay()
+    {
+        sleep(10);
+        return "caca";
     }
 
     /**

@@ -14,7 +14,7 @@
             </tr>
             @foreach($piletas as $pileta)
             <tr>
-                <td><a href="pileta/{{ $pileta->id }}"> {{ \Carbon\Carbon::parse($pileta->fecha)->format('d-m-Y') }}</a></td>
+                <td><a hx-indicator="#pensando" hx-get="/pileta/{{ $pileta->id }}"> {{ \Carbon\Carbon::parse($pileta->fecha)->format('d-m-Y') }}</a></td>
                 <td>{{ $pileta->totalPiletas }}</td>
                 <td>{{ $pileta->totalPiletas * 50 }}</td>
                 <td>{{ floor($pileta->tiempoTotal/60) }}m {{ floor($pileta->tiempoTotal%60) }}s</td>

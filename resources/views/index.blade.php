@@ -1,6 +1,6 @@
 @extends('layout.layout')
-@section('titulo', 'Piletas')
+@section('titulo', 'Calculeta')
 
 @section('contenido')
-@include('piletas.inicio')
+<p class="center"><img class="clickable" hx-get="/inicio" hx-swap="innerHTML" hx-target="#contenido" src="{{ asset('img/calculeta.png') }}" alt="Calculeta Logo"></p>
 @endsection

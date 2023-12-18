@@ -26,3 +26,7 @@ Route::get('/ultima', [ControladorPiletas::class, 'ultima']);
 
 Route::get('/pileta/{id}', [ControladorPiletas::class, 'pileta']);
 
+
+
+
+Route::get('/delay', [ControladorPiletas::class, 'delay']);
