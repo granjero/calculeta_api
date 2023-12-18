@@ -11,23 +11,24 @@ class ControladorPiletas extends Controller
      */
     public function index()
     {
-            $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
-            $piletas = json_decode($piletas);
-
-            foreach ($piletas as $pileta) {
-                $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
-                $pileta->series = explode("|", $pileta->pileta);
-
-                $tiempoTotal = 0;
-                foreach ($pileta->series as $serie) {
-                    preg_match_all('/\d+/', $serie, $matches);
-                    $tiempoTotal += array_sum($matches[0]);
-                }
-                $pileta->tiempoTotal = $tiempoTotal;
-            }
-
-            // dd($pileta->series);
-            return view('index')->with('piletas', $piletas);
+            // $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
+            // $piletas = json_decode($piletas);
+            //
+            // foreach ($piletas as $pileta) {
+            //     $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
+            //     $pileta->series = explode("|", $pileta->pileta);
+            //
+            //     $tiempoTotal = 0;
+            //     foreach ($pileta->series as $serie) {
+            //         preg_match_all('/\d+/', $serie, $matches);
+            //         $tiempoTotal += array_sum($matches[0]);
+            //     }
+            //     $pileta->tiempoTotal = $tiempoTotal;
+            // }
+            //
+            // // dd($pileta->series);
+            // return view('index')->with('piletas', $piletas);
+            return view('layout.layout');
     }
 
     /**
@@ -102,6 +103,7 @@ class ControladorPiletas extends Controller
             $promedioPileta = $serieP / $cantPiletasSerie;
             $datosSerie[$id] = ["P" => sprintf("%02d", floor($serieP/60)) . ":" . sprintf("%02d", floor($serieP%60)),
                                 "D" => sprintf("%02d", floor($serieD/60)) . ":" . sprintf("%02d", floor($serieD%60)),
+                                "segundosSerie" => $serieP,
                                 "promedio" => sprintf("%ds", $promedioPileta)
 
             ];
