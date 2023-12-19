@@ -1,4 +1,7 @@
 <div class="">
+    <div>
+    @include('layout.breadcrumbs')
+    </div>
     <section class="box flex-grow:3">
         <h2 class="inline">Nados</h2>
         <div class="overflow:auto ">

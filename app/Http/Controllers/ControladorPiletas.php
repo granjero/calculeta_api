@@ -27,7 +27,7 @@ class ControladorPiletas extends Controller
             // }
             //
             // // dd($pileta->series);
-            return view('index');
+            return view('index')->with('breadcrumbs', ['inicio' => "/inicio"]);
             // return view('layout.layout');
     }
 
@@ -53,7 +53,7 @@ class ControladorPiletas extends Controller
             }
 
             // dd($pileta->series);
-            return view('piletas.inicio')->with('piletas', $piletas);
+            return view('piletas.inicio')->with('piletas', $piletas)->with('breadcrumbs', ["inicio" => "/inicio"]);
         }
     }
 
@@ -65,7 +65,7 @@ class ControladorPiletas extends Controller
     public function acerca(Request $request)
     {
         if ($request->header('hx-request'))
-            return view('piletas.acerca')->with('menu', 'acerca');
+            return view('piletas.acerca')->with('breadcrumbs', ["inicio" => "/inicio", 'acerca' => '/acerca']);
     }
 
     public function como(Request $request)
@@ -76,6 +76,7 @@ class ControladorPiletas extends Controller
 
     public function pileta(string $id)
     {
+        $link = $id;
         $pileta = file_get_contents("https://dukarevich.com.ar/api/c/pileta/$id");
         $pileta = json_decode($pileta);
 
@@ -110,7 +111,7 @@ class ControladorPiletas extends Controller
         }
         $pileta->series = $series;
         $pileta->datosSeries = $datosSerie;
-        return view('piletas.pileta')->with('pileta', $pileta ?? ['caca']);
+        return view('piletas.pileta')->with('pileta', $pileta)->with('breadcrumbs', ["inicio" => "/inicio", "pileta" => "/pileta/$link"]);
     }
 
     /**

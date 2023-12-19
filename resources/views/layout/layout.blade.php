@@ -32,7 +32,7 @@
 
 <body>
     <div class="flotando">
-        <progress id="pensando" class="htmx-indicator ok width:100%">progress</progress>
+        <progress id="pensando" class="htmx-indicator info width:100%">progress</progress>
     </div>
     <div class="sidebar-layout fullscreen">
 

@@ -4,7 +4,7 @@
 @section('contenido')
 <div id="content" class="f-row flex-wrap:wrap">
     <section class="box flex-grow:2">
-        <h3>Nados</h3>
+        <h3>Nados caca</h3>
         <table class="container width:100%">
             <tr>
                 <th>fecha</th>

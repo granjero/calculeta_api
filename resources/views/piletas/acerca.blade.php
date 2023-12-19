@@ -1,4 +1,5 @@
 <div id="content" class="f-row flex-wrap:wrap">
+    @include('layout.breadcrumbs')
     <section class="box flex-grow:2">
         <h3>Acerca de la Calculeta®</h3>
         <p>Introducing "Calculeta" – la herramienta imprescindible para los nadadores serios que buscan llevar su entrenamiento al siguiente nivel. Con un diseño elegante y una funcionalidad potente, esta calculadora de última generación está diseñada específicamente para rastrear y mejorar tus sesiones de natación.</p>
