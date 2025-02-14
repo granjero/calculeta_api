@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    {{-- <meta name="viewport" content="width=device-width"> --}}
+    {{--
+    <meta name="viewport" content="width=device-width"> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@yield('titulo', 'Calculeta')</title>
@@ -11,8 +12,10 @@
     <link rel="stylesheet" href={{ asset('css/estilo.css') }}>
     <link rel="stylesheet" href={{ asset('css/missing.min.css') }}>
 
-    <link href="https://fonts.bunny.net/css?family=source-hiddenhiddensans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=source-hiddenhiddensans-3:400,700|m-plus-code-latin:400,700"
+        rel="stylesheet">
     <script src="{{ asset('js/htmx.min.js') }}"></script>
+    <script src="{{ asset('js/chart.umd.js') }}"></script>
 
     <style>
         :root {
@@ -55,10 +58,6 @@
         </div>
     </div>
 
-
-
-
-
 </body>
-
+@yield('js')
 </html>

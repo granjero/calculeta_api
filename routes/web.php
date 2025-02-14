@@ -26,7 +26,7 @@ Route::get('/ultima', [ControladorPiletas::class, 'ultima']);
 
 Route::get('/pileta/{id}', [ControladorPiletas::class, 'pileta']);
 
-Route::get('/1000metros', [ControladorPiletas::class, 'milMetros']);
+Route::get('/analisis', [ControladorPiletas::class, 'analisis']);
 
 
 Route::get('/delay', [ControladorPiletas::class, 'delay']);

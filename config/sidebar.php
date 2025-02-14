@@ -22,7 +22,7 @@ return [
         ],
         [
             'titulo' => 'Analisis',
-            'href'  => '/1000metros',
+            'href'  => '/analisis',
         ],
     ],
 ];

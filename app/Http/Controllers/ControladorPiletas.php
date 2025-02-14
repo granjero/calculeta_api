@@ -12,24 +12,24 @@ class ControladorPiletas extends Controller
      */
     public function index()
     {
-            // $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
-            // $piletas = json_decode($piletas);
-            //
-            // foreach ($piletas as $pileta) {
-            //     $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
-            //     $pileta->series = explode("|", $pileta->pileta);
-            //
-            //     $tiempoTotal = 0;
-            //     foreach ($pileta->series as $serie) {
-            //         preg_match_all('/\d+/', $serie, $matches);
-            //         $tiempoTotal += array_sum($matches[0]);
-            //     }
-            //     $pileta->tiempoTotal = $tiempoTotal;
-            // }
-            //
-            // // dd($pileta->series);
-            return view('index')->with('breadcrumbs', ['inicio' => "/inicio"]);
-            // return view('layout.layout');
+        // $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
+        // $piletas = json_decode($piletas);
+        //
+        // foreach ($piletas as $pileta) {
+        //     $pileta->totalPiletas = substr_count($pileta->pileta, 'P'); // cuento total piletas
+        //     $pileta->series = explode("|", $pileta->pileta);
+        //
+        //     $tiempoTotal = 0;
+        //     foreach ($pileta->series as $serie) {
+        //         preg_match_all('/\d+/', $serie, $matches);
+        //         $tiempoTotal += array_sum($matches[0]);
+        //     }
+        //     $pileta->tiempoTotal = $tiempoTotal;
+        // }
+        //
+        // // dd($pileta->series);
+        return view('index')->with('breadcrumbs', ['inicio' => "/inicio"]);
+        // return view('layout.layout');
     }
 
     /**
@@ -75,52 +75,54 @@ class ControladorPiletas extends Controller
             return "Todavía no hay nada acá.";
     }
 
-    public function pileta(string $id): View
+    public function pileta(string $id, Request $request): View
     {
-        $link = $id;
-        $pileta = file_get_contents("https://dukarevich.com.ar/api/c/pileta/$id");
-        $pileta = json_decode($pileta);
+        if ($request->header('hx-request')) {
+            $link = $id;
+            $pileta = file_get_contents("https://dukarevich.com.ar/api/c/pileta/$id");
+            $pileta = json_decode($pileta);
 
-        if (isset($pileta->error)) return $pileta->error;
+            if (isset($pileta->error)) return $pileta->error;
 
-        $pileta->piletas = substr_count($pileta->pileta, "P");
-        preg_match_all('/\d+/', $pileta->pileta, $matches);
-        $tiempoTotal = array_sum($matches[0]);
-        $pileta->tiempoTotal = $tiempoTotal;
-        $series = explode("|", $pileta->pileta);
-        $datosSerie = [];
-        foreach ($series as $id => $serie) {
-            $cantPiletasSerie = 0;
-            $series[$id] = explode(',', $serie);
-            $serieD = 0;
-            $serieP = 0;
-            foreach($series[$id] as $datos) {
-                $dato = explode(':', $datos);
-                if ($dato[0] == 'P'){
-                    $serieP += $dato[1];
-                    $cantPiletasSerie++;
+            $pileta->piletas = substr_count($pileta->pileta, "P");
+            preg_match_all('/\d+/', $pileta->pileta, $matches);
+            $tiempoTotal = array_sum($matches[0]);
+            $pileta->tiempoTotal = $tiempoTotal;
+            $series = explode("|", $pileta->pileta);
+            $datosSerie = [];
+            foreach ($series as $id => $serie) {
+                $cantPiletasSerie = 0;
+                $series[$id] = explode(',', $serie);
+                $serieD = 0;
+                $serieP = 0;
+                foreach ($series[$id] as $datos) {
+                    $dato = explode(':', $datos);
+                    if ($dato[0] == 'P') {
+                        $serieP += $dato[1];
+                        $cantPiletasSerie++;
+                    } else $serieD += $dato[1];
                 }
-                else $serieD += $dato[1];
-            }
-            $promedioPileta = $serieP / $cantPiletasSerie;
-            $datosSerie[$id] = ["P" => sprintf("%02d", floor($serieP/60)) . ":" . sprintf("%02d", floor($serieP%60)),
-                                "D" => sprintf("%02d", floor($serieD/60)) . ":" . sprintf("%02d", floor($serieD%60)),
-                                "segundosSerie" => $serieP,
-                                "promedio" => sprintf("%ds", $promedioPileta)
+                $promedioPileta = $serieP / $cantPiletasSerie;
+                $datosSerie[$id] = [
+                    "P" => sprintf("%02d", floor($serieP / 60)) . ":" . sprintf("%02d", floor($serieP % 60)),
+                    "D" => sprintf("%02d", floor($serieD / 60)) . ":" . sprintf("%02d", floor($serieD % 60)),
+                    "segundosSerie" => $serieP,
+                    "promedio" => sprintf("%ds", $promedioPileta)
 
-            ];
+                ];
+            }
+            $pileta->series = $series;
+            $pileta->datosSeries = $datosSerie;
+            return view('piletas.pileta')->with('pileta', $pileta)->with('breadcrumbs', ["inicio" => "/inicio", "pileta" => "/pileta/$link"]);
         }
-        $pileta->series = $series;
-        $pileta->datosSeries = $datosSerie;
-        return view('piletas.pileta')->with('pileta', $pileta)->with('breadcrumbs', ["inicio" => "/inicio", "pileta" => "/pileta/$link"]);
     }
 
-    public function milMetros(): View
+    public function analisis(): View
     {
-        $datos = file_get_contents("https://dukarevich.com.ar/api/c/1000mts");
-        $datos = json_decode($datos);
+        $graficoMilMetros = file_get_contents("https://dukarevich.com.ar/api/c/graficoMilMetros");
+        $graficoMilMetros = json_decode($graficoMilMetros);
 
-        return view('piletas.milMetros')->with('datos', $datos)->with('breadcrumbs', ["inicio" => "/inicio", "1000 metros" => ""]);
+        return view('piletas.analisis')->with('grafico', $graficoMilMetros)->with('breadcrumbs', ["inicio" => "/inicio", "1000 metros" => ""]);
     }
 
     /**
