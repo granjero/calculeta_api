@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ControladorPiletas extends Controller
 {
@@ -34,7 +35,7 @@ class ControladorPiletas extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function inicio(Request $request)
+    public function inicio(Request $request): View
     {
         if ($request->header('hx-request')) {
             $piletas = file_get_contents('https://dukarevich.com.ar/api/c/ultimas10');
@@ -57,24 +58,24 @@ class ControladorPiletas extends Controller
         }
     }
 
-    public function ultima()
+    public function ultima(): string
     {
         return "Todavía no hay nada acá.";
     }
 
-    public function acerca(Request $request)
+    public function acerca(Request $request): View
     {
         if ($request->header('hx-request'))
             return view('piletas.acerca')->with('breadcrumbs', ["inicio" => "/inicio", 'acerca' => '/acerca']);
     }
 
-    public function como(Request $request)
+    public function como(Request $request): string
     {
         if ($request->header('hx-request'))
             return "Todavía no hay nada acá.";
     }
 
-    public function pileta(string $id)
+    public function pileta(string $id): View
     {
         $link = $id;
         $pileta = file_get_contents("https://dukarevich.com.ar/api/c/pileta/$id");
@@ -112,6 +113,14 @@ class ControladorPiletas extends Controller
         $pileta->series = $series;
         $pileta->datosSeries = $datosSerie;
         return view('piletas.pileta')->with('pileta', $pileta)->with('breadcrumbs', ["inicio" => "/inicio", "pileta" => "/pileta/$link"]);
+    }
+
+    public function milMetros(): View
+    {
+        $datos = file_get_contents("https://dukarevich.com.ar/api/c/1000mts");
+        $datos = json_decode($datos);
+
+        return view('piletas.milMetros')->with('datos', $datos)->with('breadcrumbs', ["inicio" => "/inicio", "1000 metros" => ""]);
     }
 
     /**

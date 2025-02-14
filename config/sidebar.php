@@ -20,9 +20,9 @@ return [
             'titulo' => 'Funcionamiento',
             'href'  => '/como',
         ],
-        // [
-        //     'titulo' => 'Ultimas 10',
-        //     'href'  => 'ultimas10',
-        // ],
+        [
+            'titulo' => 'Analisis',
+            'href'  => '/1000metros',
+        ],
     ],
 ];
