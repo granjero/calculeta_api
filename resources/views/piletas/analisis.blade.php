@@ -21,17 +21,48 @@
         let data = {
             labels: [ {!! $grafico->fecha !!} ],
             datasets: [{
-                label: 'Segundos',
+                label: 'Tiempo (minutos:segundos)',
                 data: [ {!! $grafico->segundos !!} ],
                 fill: false,
                 borderColor: 'rgb(12, 150, 12)',
                 tension: 0
             }]
-    };
-    new Chart(grafico, {
-        type: "line",
-        data: data,
-    });
+        };
+        let config = {
+            type: 'line',
+            data:data,
+            options: {
+                scales: {
+                    y: {
+                        ticks: {
+                            callback:
+                                function(segundos) {
+                                    return formatoTiempo(segundos)
+                                }
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(valor) {
+                                let segundos = valor.raw;
+                                let minutosSegundos = formatoTiempo(segundos);
+                                return 'Tiempo: ' + minutosSegundos;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        new Chart(grafico, config);
     }
+    // Helper function to convert seconds to mm:ss format
+    function formatoTiempo(tiempo) {
+        const minutos = Math.floor(tiempo / 60);
+        const segundos = tiempo % 60;
+        return `${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
+    }
+
     grafico();
 </script>

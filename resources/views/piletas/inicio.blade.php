@@ -1,6 +1,6 @@
 <div class="">
     <div>
-    @include('layout.breadcrumbs')
+        @include('layout.breadcrumbs')
     </div>
     <section class="box flex-grow:3">
         <h2 class="inline">Nados</h2>
@@ -14,7 +14,11 @@
                     <th>tiempo</th>
                 </tr>
                 @foreach($piletas as $pileta)
-                <tr class="clickable" hx-get="/pileta/{{ $pileta->id }}" hx-indicator="#pensando" hx-target="#contenido" hx-swap="ineerHTML" >
+                <tr class="clickable"
+                    hx-get="/pileta/{{ $pileta->id }}"
+                    hx-indicator="#pensando"
+                    hx-target="#contenido"
+                    hx-swap="ineerHTML">
                     <td><span>🏊</span></td>
                     <td>{{ \Carbon\Carbon::parse($pileta->fecha)->format('d-m-Y') }}</td>
                     <td>{{ $pileta->totalPiletas }}</td>
