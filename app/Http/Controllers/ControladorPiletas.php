@@ -119,10 +119,12 @@ class ControladorPiletas extends Controller
 
     public function analisis(): View
     {
-        $graficoMilMetros = file_get_contents("https://dukarevich.com.ar/api/c/graficoMilMetros");
-        $graficoMilMetros = json_decode($graficoMilMetros);
+        $grafico1000Metros = file_get_contents("https://dukarevich.com.ar/api/c/graficoXMetros/1000");
+        $grafico1000Metros = json_decode($grafico1000Metros);
+        $grafico1500Metros = file_get_contents("https://dukarevich.com.ar/api/c/graficoXMetros/1500");
+        $grafico1500Metros = json_decode($grafico1500Metros);
 
-        return view('piletas.analisis')->with('grafico', $graficoMilMetros)->with('breadcrumbs', ["inicio" => "/inicio", "1000 metros" => ""]);
+        return view('piletas.analisis')->with('grafico1000', $grafico1000Metros)->with('grafico1500', $grafico1500Metros)->with('breadcrumbs', ["inicio" => "/inicio", "gráficos" => ""]);
     }
 
     /**
